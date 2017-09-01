@@ -26,6 +26,24 @@ Only delete data from the yellow columns, all others are formulas you shouldn't 
 
 Or touch them. I'm not your boss.
 
+# Seconds for Time Input
+If you would like a more prescise time input at Ctrl + Shift + ;, then you'll need to add the following to your macros. I personally am not in favor of distributing Excel files with embedded macros so I leave it here since it's small enough. Afterwards, just run the setKey macro and you're ctrl+shift+; will add seconds now.
+
+Sub setKey()
+    Application.OnKey "+^:", "EnterTime"
+    End Sub
+Sub resetKey()
+    Application.OnKey "+^:"
+    End Sub
+Sub EnterTime()
+    With ActiveCell
+    .Value = Time()
+    .NumberFormat = "hh:mm:ss"
+        End With
+    End Sub
+
+
+
 # Adding more chievos/features/whatnot
 Go right ahead, these are mostly examples I thought would be fun. I can't imagine I'm going to iterate this into a fully featured AD&D Temple of Elemental Evil campaign though.
 
